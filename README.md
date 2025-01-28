@@ -122,15 +122,6 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 
 本项目的语音对话功能受到 [xiaozhi](https://github.com/78/xiaozhi) 项目的启发，在其基础上进行了完善，使其能够与小智开源固件进行正常通信。感谢xiaozhi项目团队的开源贡献。
 
-## 🤝 贡献指南
-我们欢迎所有形式的贡献，无论是新功能、bug修复还是文档改进。请遵循以下步骤：
-
-1. Fork 本仓库
-2. 创建新的分支 `git checkout -b feature/AmazingFeature`
-3. 提交更改 `git commit -m 'Add some AmazingFeature'`
-4. 推送到分支 `git push origin feature/AmazingFeature`
-5. 提交 Pull Request
-
 ## 📄 开源协议
 本项目采用 [MIT](LICENSE) 协议开源。用户基于本项目开发的插件可以选择不开源，并可以进行商业化运营。这意味着您可以：
 - 自由使用、修改和分发本项目的代码
@@ -143,7 +134,7 @@ Minna 是本系统的数字形象，一位充满活力的小女孩。她不仅�
 
 ## 📞 联系我们
 - 官方网站：[https://manykit.com](https://manykit.com)
-- 技术支持：support@manykit.com
+- 技术支持：manyxu@foxmail.com
 - 项目地址：[GitHub Repository](https://gitee.com/manykit/minna)
 
 ## 🙏 致谢
