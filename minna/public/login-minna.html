@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>登入</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="./layui-minna/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="./layui-minna/minna.css" media="all">
+</head>
+<body style="outline: none; user-select: none;">
+
+  <div class="layminna-user-login layminna-user-display-show" id="LAY-user-login" style="display: none;">
+
+    <div class="layminna-user-login-main">
+      <div class="layminna-user-login-box layminna-user-login-header" id="login">
+ 
+        <img src="./home-minna/icon.jpg" alt="MINNA Logo" width="240" height="240" style="margin: 15px auto; display: block; border-radius: 50%; border: 3px solid #fff;">
+        <h2>MINNA</h2>
+        <p><em>"I gona walk with you!"</em></p>
+        <br>
+        <p>Minna是一个开源的个人物联网平台，旨在提供一个简单易用的物联网方案。这里是许多米网站下的有限功能版本，您需要先到MANYKIT.COM注册登录。</p>
+      </div>
+      <div class="layminna-user-login-box layminna-user-login-body layui-form">
+        <div class="layui-form-item">
+          <button class="layui-btn" style="background-color: #9b59b6; width: 100px; display: block; margin: 0 auto; border-radius: 4px;" onclick="window.open('https://manykit.com', '_blank')">注册/登录</button>
+        </div>
+        <div class="layui-form-item">
+          <div style="margin:0 auto; text-align: center;">
+            <span id="login_container"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="layui-trans layminna-user-login-footer">
+      <p>https://manykit.com © 2016-2025 <a href="https://manykit.com" target="_blank"></a></p>
+    </div>
+  </div>
+
+  <script src="./layui-minna/layui/layui.js"></script>  
+  <script>
+
+  layui.config({
+    base: './layui-minna/' //静态资源所在路径
+  }).extend({
+    index: 'index' //主入口模块
+  }).use(['index', ], function(){
+    var $ = layui.$
+    ,setting = layui.setting
+    ,minna = layui.minna
+    ,form = layui.form
+    ,router = layui.router()
+    ,search = router.search;
+
+    form.render();
+
+    form.on('submit(LAY-user-login-submit)', function(obj){    
+      minna.req({
+        url: setting.url +  "users/login" //实际使用请改成服务端真实接口
+        ,data: obj.field
+        ,done: function(res)
+        {
+          layui.data(setting.tableName, {
+            key: setting.request.nickName
+            ,value: res.data.nickname
+          });
+
+          layui.data(setting.tableName, {
+            key: setting.request.tokenName
+            ,value: res.data.access_token
+          });
+          
+          layer.msg('登入成功', {
+            offset: '15px'
+            ,icon: 1
+            ,time: 1000
+          }, function(){
+            location.href = 'index.html'; //后台主页
+          });
+        }
+      });      
+    });   
+    
+  });
+  </script>
+</body>
+</html>

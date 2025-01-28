@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layui-minna/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../layui-minna/minna.css" media="all">
+</head>
+<style>
+  #minna-homeurl-sidmenulogo.layui-logo {
+    background-color: red !important;
+  }
+</style>
+<body>
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <div class="layui-card-header" id="deviceTypeTitle"></div>
+          <div class="layui-card-body"pad15>
+            <div>
+              <table class="layui-hide" id="devicetable" lay-filter="devicetable"></table>
+
+              <script type="text/html" id="devicetoolbar">
+                <div class="layui-btn-container">
+                  <!--<button class="layui-btn layui-btn-sm" lay-event="devicetoolbar_add">新增</button>-->
+                  <button id="delete" class="layui-btn layui-btn-sm" lay-event="devicetoolbar_delete">删除选中</button>
+                </div>
+              </script>
+
+              <script type="text/html" id="devicebar">
+                  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">查看</a>                 
+                  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+              </script>                                  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="content_device_edit" style="display: none; padding: 15px;" >
+    <br>
+    <form class="layui-form layui-form-pane" lay-filter="deviceedit">
+      <div class="layui-form-item">
+        <label class="layui-form-label">ID</label>
+        <div class="layui-input-block">
+          <input type="text" name="id" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>  
+      <div class="layui-form-item">
+        <label class="layui-form-label">创建时间</label>
+        <div class="layui-input-block">
+          <input type="text" name="createtime" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>    
+      <div class="layui-form-item">
+        <label class="layui-form-label">是否为系统</label>
+        <div class="layui-input-block">
+          <input type="text" name="system" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-block">
+          <input type="text" name="type" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">触发者类型</label>
+        <div class="layui-input-block">
+          <input type="text" name="fromtype" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">触发者id</label>
+        <div class="layui-input-block">
+          <input type="text" name="fromid" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">触发者名称</label>
+        <div class="layui-input-block">
+          <input type="text" name="fromname" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">触发者备注</label>
+        <div class="layui-input-block">
+          <input type="text" name="frominfo" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+   
+      <div class="layui-form-item">
+        <label class="layui-form-label">被触发者类型</label>
+        <div class="layui-input-block">
+          <input type="text" name="totype" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">被触发者id</label>
+        <div class="layui-input-block">
+          <input type="text" name="toid" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">被触发者名称</label>
+        <div class="layui-input-block">
+          <input type="text" name="toname" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">被触发者备注</label>
+        <div class="layui-input-block">
+          <input type="text" name="toinfo" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+          <input type="text" name="info" lay-verType="tips" lay-verify="" value="" readonly="readonly" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">中文备注</label>
+        <div class="layui-input-block">
+          <input type="text" name="infochinese" lay-verType="tips" lay-verify="" readonly="readonly" value="" placeholder="请输入" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="../layui-minna/layui/layui.js"></script>
+  <script>
+    layui.config({
+      base: '../layui-minna/' //静态资源所在路径
+    }).extend({
+      index: 'index' //主入口模块
+    });
+    
+    var deviceType = "log";
+    var deviceTypeTitle = "日志";
+
+    layui.use(['index', ], function () {
+      var $ = layui.$
+        , setting = layui.setting
+        , minna = layui.minna
+        , form = layui.form
+        , router = layui.router()
+        , search = router.search;
+    });
+
+    layui.use(['index', 'layer',  'form', 'layedit', 'laydate', 'table', 'element', 'jquery', 'upload'], function () {
+      var form = layui.form,
+        $ = layui.$,
+        minna = layui.minna,
+        setting = layui.setting,
+        layer = layui.layer,
+        element = layui.element,
+        layjq = layui.jquery;
+      var table = layui.table;
+      var layer = layui.layer;
+      var laydate = layui.laydate;
+      var upload = layui.upload;
+
+      document.getElementById("deviceTypeTitle").innerText = deviceTypeTitle;
+      var url = setting.url + deviceType + '/list?token=' + deviceTypeTitle;
+      table.render({
+        elem: '#devicetable'
+        ,toolbar: '#devicetoolbar' //开启头部工具栏，并为其绑定左侧模板
+        ,defaultToolbar: ['filter', 'exports', 'print']
+        , url: url
+        , cols: [[
+          { type: 'numbers', title: '行', fixed: true }
+          , { type: 'checkbox' }
+          , { field: 'id', title: 'ID', width: 70, sort: true }
+          , { field: 'createtime', title: '创建时间', width: 100, sort: true }
+          , { field: 'system', title: '是否为系统', width: 100, sort: true }
+          , { field: 'type', title: '类型', width: 100, sort: true }
+
+          , { field: 'fromtype', title: '触发者类型', width: 120, sort: true }
+          , { field: 'fromid', title: '触发者id', width: 80, sort: true }
+          , { field: 'fromname', title: '触发者名称', width: 120, sort: true }
+          , { field: 'frominfo', title: '触发者备注', width: 120, sort: true }
+
+          , { field: 'totype', title: '被触发者类型', width: 120, sort: true }
+          , { field: 'toid', title: '被触发者id', width: 120, sort: true }
+          , { field: 'toname', title: '被触发者名称', width: 120, sort: true }
+          , { field: 'toinfo', title: '被触发者备注', width: 120, sort: true }
+
+          , { field: 'info', title: '备注', width: 100, sort: true }
+          , { field: 'infochinese', title: '中文备注', width: 100, sort: true }
+          
+          , { title: '操作', width: 120, templet: '#devicebar', unresize: true, fixed: 'right' }
+        ]]
+        ,id: 'devicetable'
+        , page: true
+      });
+
+      minna.req({
+        url: setting.url + "users/getme"
+        , data: {}
+        , done: function (res) 
+        {
+          adminlevel = res.data.adminlevel;      
+          
+          var eleDelete = document.getElementById("delete");
+          
+          if (0 == adminlevel)
+          {              
+            eleDelete.style.display = "none";
+          }
+          else{
+            eleDelete.style.display = "";
+          }
+        }
+      });
+
+      form.on('submit(devicegetkey)', function (data) {
+          var u = setting.url + deviceType + "/getkey";
+          var params = data.field;
+          minna.req({
+              url: u
+              , data: params
+              , success: function (res) {
+                if (0 == res.code) {                            
+                  form.val('deviceedit', {
+                        "key": res.data
+                      });
+                }
+              }
+          });
+      });
+     
+      table.on('toolbar(devicetable)', function (obj) {
+          var checkStatus = table.checkStatus(obj.config.id);
+          var data = obj.data;
+       
+          if (obj.event === 'devicetoolbar_delete') {
+            var data = checkStatus.data;
+            if (0 != data.length){
+                var idArray = [];
+                for (var i = 0; i < data.length; i++) {
+                  idArray.push(data[i].id);
+                }
+                var dtStr = JSON.stringify(idArray);
+                var senddata = {
+                  ids:dtStr
+                };
+
+                layer.confirm('确定删除？', function (index) {
+                  minna.req({
+                      url: setting.url + deviceType + "/delete"
+                      , data: senddata
+                      , success: function (res) {
+                          if (0 == res.code) {
+                              layer.close(index);
+                              table.reload('devicetable', {
+                                page: {
+                                  curr: table.curr
+                                }
+                                ,where: {
+                                  key: {
+                                    id: ""
+                                  }
+                                }
+                              }, 'data');
+                          }
+                          else {
+                          }
+                      }
+                  });
+              });
+            }
+          }
+      });
+      table.on('tool(devicetable)', function (obj) {
+          var data = obj.data;
+          if (obj.event === 'edit') {
+            if (1 == adminlevel)
+            {
+              var id = data.id;
+
+              var senddata = {};
+              senddata.id = id;
+
+              minna.req({
+                  url: setting.url + deviceType + "/get"
+                  , data: senddata
+                  , success: function (res) {
+                      if (0 == res.code) {
+
+                      form.val('deviceedit', {
+                      "id":res.data.id,
+                                   "createtime":res.data.createtime,
+                                   "system":res.data.system,
+                                   "type":res.data.type,
+                                   "fromtype":res.data.fromtype,
+                                   "fromid":res.data.fromid,
+                                   "fromname":res.data.fromname,
+                                   "frominfo":res.data.frominfo,
+                                   "totype":res.data.totype,
+                                   "toname":res.data.toname,        
+                                   "toid":res.data.toid,
+                                   "toinfo":res.data.toinfo,
+                                   "info":res.data.info,
+                                   "infochinese":res.data.infochinese                   
+                        });
+
+                        layer.open({
+                            type: 1,
+                            title: "查看",
+                            maxmin: true,
+                            shift: 0,
+                            area: 'auto',
+                            content: $("#content_device_edit"),
+                            success: function (layero, index) { },
+                            yes: function () {}
+                        });                                  
+                      }
+                      else {
+                      }
+                  }
+              });
+            }
+            else{
+              layer.alert("没有权限!");
+            }
+          }
+          else if (obj.event === 'del') {
+            if (1 == adminlevel)
+            {
+              var id = data.id;
+
+              var idArray = [];
+              idArray.push(id);
+              var dtStr = JSON.stringify(idArray);
+              var senddata = {
+                ids:dtStr
+              };
+
+              layer.confirm('确定删除？', function (index) {
+                  minna.req({
+                      url: setting.url + deviceType + "/delete"
+                      , data: senddata
+                      , success: function (res) {
+                          if (0 == res.code) {
+                              layer.close(index);
+                              table.reload('devicetable', {
+                                page: {
+                                  curr: table.curr
+                                }
+                                ,where: {
+                                  key: {
+                                    id: ""
+                                  }
+                                }
+                              }, 'data');
+                          }
+                          else {
+                          }
+                      }
+                  });
+              });
+            }
+            else{
+              layer.alert("没有权限!");
+            }
+          }
+        
+      });
+
+    });
+  </script>
+</body>
+
+</html>

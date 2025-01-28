@@ -1,0 +1,1 @@
+"D:\MongoDB\Server\3.2\bin\mongoimport.exe" -d mthing -c model_peoples --file model_peoples.json --type json -u mthing -p mt123 --authenticationDatabase admin

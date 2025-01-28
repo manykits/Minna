@@ -1,0 +1,1 @@
+start "MongoDB stage mthing" "C:\Program Files (x86)\MongoDB\Server\3.2\bin\mongo.exe" mthing

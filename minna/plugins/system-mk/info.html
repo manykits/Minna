@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>设置我的资料</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layui-minna/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../layui-minna/minna.css" media="all">
+</head>
+<style>
+  #minna-homeurl-sidmenulogo.layui-logo {
+    background-color: red !important;
+  }
+
+</style>
+<body>
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <div class="layui-card-header">设置我的资料</div>
+          <div class="layui-card-body">
+              帐号信息
+              <hr class="layui-bg-green">
+              <div class="layui-form" id="MK-user-info" lay-filter="">
+                <div class="layui-form-item">
+                <label class="layui-form-label">用户ID</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="id" value="" readonly class="layui-input">
+                  </div>
+                <div class="layui-form-mid layui-word-aux">不可修改</div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">手机</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="phone" value="" readonly autocomplete="off" class="layui-input">
+                </div>
+                <!-- <div class="layui-input-inline" style="width: auto;">
+                  <button data-method="onemailphonebind" class="layui-btn layui-btn-primary" lay-verify="" name="btn_phonebind">绑定手机</button>
+                </div> -->
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="email" value="" readonly autocomplete="off" class="layui-input">
+                </div>
+                <!-- <div class="layui-input-inline" style="width: auto;">
+                  <button data-method="onemailphonebind" class="layui-btn layui-btn-primary" lay-verify="" name="btn_emailbind">绑定邮箱</button>
+                </div> -->
+              </div>
+              个人信息
+              <hr class="layui-bg-green">
+              <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="nickname" value=""  autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="sex" value="1" title="男">
+                  <input type="radio" name="sex" value="0" title="女" checked>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">头像</label>
+                <div class="layui-input-inline">
+                  <input name="head" lay-verify="" id="AvatarSrc" placeholder="图片地址" value="" class="layui-input">
+                </div>
+                <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                  <button type="button" class="layui-btn layui-btn-primary" id="AvatarUpload">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                  </button>
+                  <button class="layui-btn layui-btn-primary" layminna-event="avatorPreview">查看图片</button >
+                </div>
+              </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">管理员级别</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="adminlevel" value="" readonly lay-verify="" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+              <div class="layui-form-item layui-form-text">
+                  <label class="layui-form-label">自我介绍</label>
+                  <div class="layui-input-block">
+                    <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
+                  </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">关联单位ID</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="groupids" value="" readonly autocomplete="off" placeholder="" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">逗号间隔</div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <button class="layui-btn" lay-submit lay-filter="savemyinfo">确认修改</button>
+                </div>
+              </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../layui-minna/layui/layui.js"></script>  
+  <script src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+  <script>
+  layui.config({
+    base: '../layui-minna/' //静态资源所在路径
+  }).extend({
+    index: 'index' //主入口模块
+  }).use(['index']);
+
+  layui.use(['index', 'layer', 'upload'], function () {
+    var $ = layui.$
+      ,setting = layui.setting
+      ,minna = layui.minna
+      ,form = layui.form
+      ,router = layui.router()
+      ,search = router.search,
+      layer = layui.layer; 
+      var upload = layui.upload;
+
+      var table = layui.data(layui.setting.tableName);
+      var tkname = layui.setting.request.tokenName;
+      var tokenValue = table[tkname];
+
+      if (tokenValue && "" != tokenValue)
+      {
+        //请求登入接口
+        minna.req({
+          url: setting.url +  "users/getme"
+          , data: {
+          }
+          , done: function (res) {
+
+            $("[name=id]").val(res.data.id);
+            $("[name=email]").val(res.data.email);
+            $("[name=nickname]").val(res.data.nickname);
+            $("[name=phone]").val(res.data.phone);
+            $("[name=head]").val(res.data.head);
+            $("[name=description]").val(res.data.description);
+            $("[name=groupids]").val(res.data.groupids);
+            $("input[name=sex][value=1]").attr("checked", (res.data.sex == "1" ? true : false));
+            $("input[name=sex][value=0]").attr("checked", (res.data.sex == "0" ? true : false));
+            $("[name=adminlevel]").val(res.data.adminlevel);
+
+            form.render();
+          }
+        }); 
+      }
+      else{
+        layer.msg("请先登录！"); 
+      }
+
+      form.on('submit(savemyinfo)', function(obj){
+        minna.req({
+          url: setting.url +  "users/saveme" 
+          ,data: obj.field
+          ,success: function(res){
+            if (0 == res.code)
+            {
+              layer.msg("修改成功");
+            }
+          }
+        });   
+      });
+      
+      var tourl = '/users/uploadhead/?token=' + tokenValue;
+      var avatarSrc = $('#AvatarSrc');
+
+      upload.render({
+        url: tourl
+        ,elem: '#AvatarUpload'
+        ,done: function(res){
+          if (res.code == 0){
+            avatarSrc.val(res.url);
+          } else {
+            layer.msg(res.msg, {icon: 5});
+          }
+        }
+      });
+      
+      minna.events.avatorPreview = function(othis){
+        var src = avatarSrc.val();
+        var toUrl = setting.url +  src;
+        layer.photos({
+          photos: {
+            "title": "查看头像"
+            ,"data": [{
+              "src": toUrl
+            }]
+          }
+          ,shade: 0.01
+          ,closeBtn: 1
+          ,anim: 5
+        });
+      };
+  });
+</script>
+</body>
+</html>

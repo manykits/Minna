@@ -1,0 +1,98 @@
+{   
+	"system" : {
+		"name" : "minna-mk",
+		"title" : "MINNA",
+		"title_en" : "Minna",
+		"index" : "home-minna/index.html"
+	},
+	"catas":[
+        {
+            "name": "home",
+            "id": "home",
+            "title":"首页",
+            "icon":"layui-icon layui-icon-home"
+        },  
+		{
+            "name": "log",
+            "id": "log",
+            "title":"日志",
+            "icon":"layui-icon layui-icon-read"
+        },
+        {
+            "name":"people",
+            "id":"people",
+            "title":"人员" ,
+            "icon":"layui-icon layui-icon-user"
+        },
+		{
+            "name":"device",
+            "id":"device",
+            "title":"设备",
+            "icon":"layui-icon layui-icon-transfer"
+        },
+        {
+            "name":"resource",
+            "id":"resource",
+            "title":"资源",
+            "icon":"layui-icon layui-icon-tree"
+        },
+        {
+            "name":"system",
+            "id":"system",
+            "title":"系统",
+            "icon":"layui-icon layui-icon-set"
+        }
+	],
+    "plugins": [  
+		{
+            "name": "home",
+            "dir": "home-minna",
+			"title":"首页",
+            "uselocalrouter":"0",
+            "cata":"home"
+        },
+        {
+            "name": "users",
+            "dir": "users",
+			"title":"用户",
+            "uselocalrouter":"0",
+            "cata":"people"
+        },
+		{
+            "name":"device-aitalk",
+            "dir":"device-aitalk",
+            "title":"设备-AITalk",
+            "uselocalrouter":"1",
+            "cata":"device"
+        },
+		{
+            "name": "log",
+            "dir": "log",
+			"title":"日志",
+            "uselocalrouter":"0",
+            "cata":"log"
+        },
+        {
+            "name": "account",
+            "dir": "system",
+			"title":"账号",
+            "uselocalrouter":"0",
+            "cata":"system",
+			"index":"./info.html"
+        },
+        {
+            "name": "airobot",
+            "dir": "airobot",
+			"title":"资源-AIRobot",
+            "uselocalrouter":"1",
+            "cata":"resource"
+        },
+        {
+            "name": "tts",
+            "dir": "tts",
+			"title":"资源-TTS",
+            "uselocalrouter":"1",
+            "cata":"resource"
+        }
+    ]
+}

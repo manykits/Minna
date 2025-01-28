@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layui-minna/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../layui-minna/minna.css" media="all">
+</head>
+
+<body>
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <div class="layui-card-header" id="deviceTypeTitle"></div>
+          <div class="layui-card-body"pad15>
+            <div>
+              <table class="layui-hide" id="devicetable" lay-filter="devicetable"></table>
+
+              <script type="text/html" id="devicetoolbar">
+                <div class="layui-btn-container">
+                  <button id="add" class="layui-btn layui-btn-sm" lay-event="devicetoolbar_add">新增</button>
+                  <button id="delete" class="layui-btn layui-btn-sm" lay-event="devicetoolbar_delete">删除选中</button>
+                </div>
+              </script>
+
+              <script type="text/html" id="devicebar">
+                  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
+                  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="sample" >示例</a>
+                </script>
+
+              <script type="text/html" id="stateTpl">
+                <input type="checkbox" name="state" lay-skin="switch" disabled lay-text="启用|关闭" {{ d.state == 1 ? 'checked' : '' }}>
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="content_device" style="display: none; padding: 15px;">
+    <br>
+    <form class="layui-form layui-form-pane" lay-filter="deviceadd">
+      <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+          <input type="text" name="name" lay-verType="tips" lay-verify="required" value="未命名" placeholder="请输入标题" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">是否启用</label>
+        <div class="layui-input-block">
+          <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|关闭">
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+          <textarea placeholder="请输入内容" class="layui-textarea" name="description"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button type="button" class="layui-btn" lay-submit="" lay-filter="device_add">增加</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="content_device_edit" style="display: none; padding: 15px;">
+    <br>
+    <form class="layui-form layui-form-pane" lay-filter="deviceedit">
+      <div class="layui-form-item">
+        <label class="layui-form-label">ID</label>
+        <div class="layui-input-block">
+          <input type="text" name="edit_id" lay-verType="tips" readonly value="未命名" placeholder="" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+          <input type="text" name="edit_name" lay-verType="tips" lay-verify="required" value="未命名" placeholder="请输入标题" autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">是否启用</label>
+        <div class="layui-input-block">
+          <input type="checkbox" name="edit_state" lay-skin="switch" lay-text="启用|关闭">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">音源</label>
+        <div class="layui-input-block">
+          <input type="text" name="edit_voice_source" required="" lay-verType="tips" lay-verify="" placeholder="请输入设备码"
+          autocomplete="off" class="layui-input" />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">音源ID</label>
+        <div class="layui-input-block">
+          <input type="text" name="edit_voice_id" required="" readonly lay-verType="tips" lay-verify="" placeholder="请输入设备码"
+          autocomplete="off" class="layui-input" />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">支持语言</label>
+        <div class="layui-input-block">
+          <input type="text" name="edit_languages" required="" lay-verType="tips" lay-verify="" placeholder="请输入设备码"
+          autocomplete="off" class="layui-input" />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">示例</label>
+        <div class="layui-input-block">
+          <input type="text" name="edit_voice_demo" required="" readonly lay-verType="tips" lay-verify="" placeholder=""
+          autocomplete="off" class="layui-input" />
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+          <textarea placeholder="请输入内容" class="layui-textarea" name="edit_description"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button type="button" class="layui-btn" lay-submit="" lay-filter="edit_save">保存</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="../layui-minna/layui/layui.js"></script>
+  <script>
+    layui.config({
+      base: '../layui-minna/' //静态资源所在路径
+    }).extend({
+      index: 'index' //主入口模块
+    });
+    
+    var deviceType = "tts";
+    var deviceTypeTitle = "资源-TTS";
+    var adminlevel = 0;
+
+    layui.use(['index', ], function () {
+      var $ = layui.$
+        , setting = layui.setting
+        , minna = layui.minna
+        , form = layui.form
+        , router = layui.router()
+        , search = router.search;
+    });
+
+    layui.use(['index', 'layer',  'form', 'layedit', 'laydate', 'table', 'element', 'jquery'], function () {
+      var form = layui.form,
+        $ = layui.$,
+        minna = layui.minna,
+        setting = layui.setting,
+        layer = layui.layer,
+        element = layui.element,
+        layjq = layui.jquery;
+      var table = layui.table;
+      var layer = layui.layer;
+      var laydate = layui.laydate;
+
+      document.getElementById("deviceTypeTitle").innerText = deviceTypeTitle;
+      
+      var url = setting.url +  deviceType + '/list';
+      table.render({
+        elem: '#devicetable'
+        ,toolbar: '#devicetoolbar' //开启头部工具栏，并为其绑定左侧模板
+        ,defaultToolbar: ['filter', 'exports', 'print']
+        , url: url
+        , cols: [[
+          { type: 'numbers', title: '行', fixed: true }
+          , { type: 'checkbox' }
+          , { field: 'id', title: 'ID', width: 70, sort: true }
+          , { field: 'name', title: '名称', width: 150, sort: true }
+          , { field: 'state', title: '是否启用', width: 110, sort: true,templet:'#stateTpl'}
+          , { field: 'voice_source', title: '音源', width: 160 }
+          , { field: 'voice_id', title: '音源ID', width: 160 }
+          , { field: 'languages', title: '支持语言', width: 150 }
+          , { field: 'voice_demo', title: '示例', width: 300 }
+          , { field: 'description', title: '描述', width: 150 }
+          , { title: '操作', width: 200, templet: '#devicebar', unresize: true, fixed: 'right' }
+        ]]
+        ,id: 'devicetable'
+        , page: true
+      });
+
+      minna.req({
+        url: setting.url +  "users/getme"
+        , data: {}
+        , done: function (res) 
+        {
+          adminlevel = res.data.adminlevel;      
+          
+          var eleAdd = document.getElementById("add");
+          var eleDelete = document.getElementById("delete");
+          
+          if (0 == adminlevel)
+          {              
+            eleAdd.style.display = "none";
+            eleDelete.style.display = "none";
+          }
+          else{
+            eleAdd.style.display = "";
+            eleDelete.style.display = "";
+          }
+        }
+      });
+
+      form.on('submit(devicegetkey)', function (data) {
+          var u = setting.url +  deviceType + "/getkey";
+          var params = data.field;
+          minna.req({
+              url: u
+              , data: params
+              , success: function (res) {
+                if (0 == res.code) {                            
+                  form.val('deviceedit', {
+                        "edit_key": res.data
+                      });
+                }
+              }
+          });
+      });
+
+      form.on('submit(device_add)', function (data) {
+          var u = setting.url +  deviceType + "/add";
+          var params = data.field;
+          minna.req({
+              url: u
+              , data: params
+              , success: function (res) {
+                  if (0 == res.code) {                            
+                    layer.closeAll();
+                    table.reload('devicetable', {
+                      page: {
+                        curr: table.curr
+                      }
+                      ,where: {
+                        key: {
+                          id: ""
+                        }
+                      }
+                    }, 'data');
+                }
+              }
+          });
+      });
+
+      form.on('submit(edit_save)', function (data) {
+          var u = setting.url +  deviceType + "/save";
+          var params = data.field;
+          minna.req({
+              url: u
+              , data: params
+              , success: function (res) {
+                if (0 == res.code) {
+                  layer.closeAll();
+                  table.reload('devicetable', {
+                                page: {
+                                  curr: table.curr
+                                }
+                                ,where: {
+                                  key: {
+                                    id: ""
+                                  }
+                                }
+                              }, 'data');
+                }
+              }
+          });
+      });
+
+      table.on('toolbar(devicetable)', function (obj) {
+          var checkStatus = table.checkStatus(obj.config.id);
+          var data = obj.data;
+          if (obj.event === 'devicetoolbar_add') {
+            layer.open({
+              type: 1,
+              title: "新增",
+              maxmin: true,
+              fixed : true, //不固定
+              scrollbar : true,
+              shift: 0,
+              area: 'auto',
+              content: $("#content_device"),
+              success: function (layero, index) { },
+              yes: function () {}
+            });
+          }
+          else if (obj.event === 'devicetoolbar_delete') {
+            var data = checkStatus.data;
+            if (0 != data.length){
+                var idArray = [];
+                for (var i = 0; i < data.length; i++) {
+                  idArray.push(data[i].id);
+                }
+                var dtStr = JSON.stringify(idArray);
+                var senddata = {
+                  ids:dtStr
+                };
+
+                layer.confirm('确定删除？', function (index) {
+                  minna.req({
+                      url: setting.url +  deviceType + "/delete"
+                      , data: senddata
+                      , success: function (res) {
+                          if (0 == res.code) {
+                              layer.close(index);
+                              table.reload('devicetable', {
+                                page: {
+                                  curr: table.curr
+                                }
+                                ,where: {
+                                  key: {
+                                    id: ""
+                                  }
+                                }
+                              }, 'data');
+                          }
+                          else {
+                          }
+                      }
+                  });
+              });
+            }
+          }
+      });
+
+      table.on('tool(devicetable)', function (obj) {
+          var data = obj.data;
+          if (obj.event === 'edit') {
+            if (1 == adminlevel)
+            {
+              var id = data.id;
+
+              var senddata = {};
+              senddata.id = id;
+
+              minna.req({
+                  url: setting.url +  deviceType + "/get"
+                  , data: senddata
+                  , success: function (res) {
+                      if (0 == res.code) {
+                        form.val('deviceedit', {
+                          "edit_id": res.data.id
+                          ,"edit_name": res.data.name
+                          ,"edit_state": res.data.state=="1"
+                          ,"edit_voice_source": res.data.voice_source
+                          ,"edit_voice_id": res.data.voice_id
+                          ,"edit_languages":res.data.languages
+                          ,"edit_voice_demo": res.data.voice_demo
+                          ,"edit_description": res.data.description
+                        });
+
+                        layer.open({
+                            type: 1,
+                            title: "编辑",
+                            maxmin: true,
+                            shift: 0,
+                            area: 'auto',
+                            content: $("#content_device_edit"),
+                            success: function (layero, index) { },
+                            yes: function () {}
+                        });                                  
+                      }
+                      else {
+                      }
+                  }
+              });
+            }
+            else{
+              layer.alert('没有权限!');
+            }
+          }
+          else if (obj.event === 'del') {
+            if (1 == adminlevel)
+            {
+              var id = data.id;
+
+              var idArray = [];
+              idArray.push(id);
+              var dtStr = JSON.stringify(idArray);
+              var senddata = {
+                ids:dtStr
+              };
+
+              layer.confirm('确定删除？', function (index) {
+                  minna.req({
+                      url: setting.url +  deviceType + "/delete"
+                      , data: senddata
+                      , success: function (res) {
+                          if (0 == res.code) {
+                              layer.close(index);
+                              table.reload('devicetable', {
+                                page: {
+                                  curr: table.curr
+                                }
+                                ,where: {
+                                  key: {
+                                    id: ""
+                                  }
+                                }
+                              }, 'data');
+                          }
+                          else {
+                          }
+                      }
+                  });
+              });
+            }
+            else{
+              layer.alert('没有权限!');
+            }
+          }
+          else if(obj.event === 'sample'){
+            var id = data.id;
+
+            var senddata = {};
+            senddata.id = id;
+          
+            minna.req({
+                url: setting.url +  deviceType + "/get"
+                , data: senddata
+                , success: function (res) {
+                    if (0 == res.code) {  
+
+                      console.log(res.data);
+
+                      var src = res.data.voice_demo;
+                      var cntstr = '<audio src="' + src + '" autoplay="autoplay" controls="controls">wav</audio>';
+                          layer.open({
+                            title: '音频',
+                            type: 1,
+                            closeBtn: false,
+                            area: 'auto',
+                            offset: 'auto',
+                            maxmin: true,
+                            anim: 5,
+                            closeBtn: 1,
+                            shadeClose: true,
+                            content: cntstr
+                          });
+                    }
+                }
+            });
+          }
+      });
+    });
+  </script>
+</body>
+
+</html>

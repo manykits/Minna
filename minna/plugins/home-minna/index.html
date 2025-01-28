@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>minna home page</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layui-minna/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../layui-minna/minna.css" media="all">
+</head>
+<body>
+  
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space12">
+      <div class="layui-col-md8" id="space_left">        
+        <div class="layui-card">
+          <div class="layui-card-header">展示</div> 
+          <div class="layui-card-body">
+            <div class="layui-carousel" id="pn_pictureshow" style="width: 100%;height:auto" lay-filter="pn_pictureshow">
+              <div carousel-item="" style="">
+                <div> <img src="minna.jpg" style="width: 100%;height:auto" ></div>
+              </div>
+            </div> 
+          </div>                                         
+        </div>
+
+        <div class="layui-card">
+          <div class="layui-card-header">快捷方式</div>
+          <div class="layui-card-body">
+            
+            <div class="layui-carousel layminna-carousel layminna-shortcut">
+              <div carousel-item>
+                <ul class="layui-row layui-col-space10">
+                  <li class="layui-col-xs3">
+                    <a lay-href="./device-aitalk/index.html">
+                      <i class="layui-icon layui-icon-read"></i>
+                      <cite>设备-AITalk</cite>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a lay-href="airobot/index.html">
+                      <i class="layui-icon layui-icon-user"></i>
+                      <cite>资源-AIRobot</cite>
+                    </a>
+                  </li>
+                  <li class="layui-col-xs3">
+                    <a lay-href="tts/index.html">
+                      <i class="layui-icon layui-icon-user"></i>
+                      <cite>资源-TTS</cite>
+                    </a>
+                  </li>   
+                  <li class="layui-col-xs3">
+                    <a lay-href="system/info.html">
+                      <i class="layui-icon layui-icon-user"></i>
+                      <cite>账号</cite>
+                    </a>
+                  </li>                                       
+                </ul>                    
+              </div>
+            </div>                
+          </div>
+        </div>
+
+        <div class="layui-card">
+          <div class="layui-card-header">系统信息</div> 
+          <div class="layui-card-body">
+            <div>
+              <span>设备数量:</span>                
+              <span id="numaitalk"></span>
+            </div>
+            <hr>
+            <div>
+              <span>机器人数:</span>                
+              <span id="numairobot"></span>
+            </div>
+            <hr>
+            <div>
+              <span>语音数量:</span>                
+              <span id="numtts"></span>
+            </div>
+            <hr>
+          </div>                                   
+        </div>
+      </div>
+      
+      <div class="layui-col-md4">
+        <div class="layui-card">
+          <div class="layui-card-header">版本信息</div>
+          <div class="layui-card-body layui-text layminna-version">
+            <table class="layui-table">
+              <colgroup>
+                <col width="100">
+                <col>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>系统名称</td>
+                  <td>MANYKIT - MINNA</td>
+                </tr>
+                <tr>
+                  <td>当前版本</td>
+                  <td>
+                    1.0.0
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+                        
+        <div class="layui-card">
+          <div class="layui-card-header">系统简介</div>
+          <div class="layui-card-body">
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;这是一个基于NodeJS，Layui框架打造的物联网系统。该系统能够轻松连接ESP32设备，并与抖音扣子平台无缝对接，通过智能代理系统提供自然流畅的语音对话体验。无论是家庭、办公还是个人用途，用户都可以将系统部署在本地，真正实现私人化、定制化的物联网管理。
+            </p>
+            <br>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;在这个系统中，我们赋予了一个特殊的数字形象——<span style="color: #9b59b6; font-weight: bold;">Minna</span>，一位可爱的小女孩，她代表着系统的温暖与智慧。
+            </p>
+            <br>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;她的slogan "<span style="color: #9b59b6; font-weight: bold;">I gona walk with you</span>" 传达了系统始终陪伴、支持用户的理念。<span style="color: #9b59b6; font-weight: bold;">Minna</span>不仅是技术的化身，更是您物联网世界中的亲密伙伴，让您的智能设备管理与沟通不再单调乏味，而是充满趣味与关怀。
+            </p>
+            <br>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;让我们一起探索物联网的无限可能！
+            </p>
+          </div>
+        </div>
+        
+        <div class="layui-card">
+          <div class="layui-card-header">文档</div>
+          <div class="layui-card-body">
+            <a href="https://manykit.com" target="_blank">https://manykit.com</a>
+          </div>
+        </div>     
+      </div>      
+    </div>
+  </div>
+
+  <script src="../layui-minna/layui/layui.js?t=1"></script>  
+  <script>
+  layui.config({
+    base: '../layui-minna/' //静态资源所在路径
+  }).extend({
+    index: 'index' //主入口模块
+  }).use(['index']);
+  layui.use(['carousel', 'form','index', 'element'], function(){
+    var carousel = layui.carousel
+        ,form = layui.form
+        , $ = layui.$
+        , setting = layui.setting
+        , minna = layui.minna
+        , form = layui.form
+        , router = layui.router()
+        ,carousel = layui.carousel
+        ,ele = layui.element
+        ,device = layui.device();
+    
+    var div = document.getElementById('space_left');  
+    var width = div.style.width || div.clientWidth || div.offsetWidth || div.scrollWidth; 
+    var height = 400 * (width / 1000);
+    var str = height.toString() + 'px';
+
+
+    //图片轮播
+    carousel.render({
+      elem: '#pn_pictureshow'
+      ,width: '100%'
+      ,height: str
+      ,interval: 5000
+    });
+    
+    //事件
+    carousel.on('change(test4)', function(res){
+      console.log(res)
+    });
+    
+    var $ = layui.$, active = {
+      set: function(othis){
+        var THIS = 'layui-bg-normal'
+        ,key = othis.data('key')
+        ,options = {};
+        
+        othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+        options[key] = othis.data('value');
+        ins3.reload(options);
+      }
+    };
+    
+    //监听开关
+    form.on('switch(autoplay)', function(){
+      ins3.reload({
+        autoplay: this.checked
+      });
+    });
+    
+    $('.demoSet').on('keyup', function(){
+      var value = this.value
+      ,options = {};
+      if(!/^\d+$/.test(value)) return;
+      
+      options[this.name] = value;
+      ins3.reload(options);
+    });
+    
+    //其它示例
+    $('.demoTest .layui-btn').on('click', function(){
+      var othis = $(this), type = othis.data('type');
+      active[type] ? active[type].call(this, othis) : '';
+    });
+
+    var tabCok = layui.data(layui.setting.tableName);
+    var tkname = layui.setting.request.tokenName;
+    var tokenValue = tabCok[tkname];
+    var url = setting.url +  "device-aitalk/list?token=" + tokenValue;
+    minna.req({   
+      url: url 
+      , data: {}
+      , done: function (res) {
+        document.getElementById("numaitalk").innerHTML = res.data.length;       
+      }       
+    });
+
+    minna.req({   
+      url: setting.url +  "airobot/list" 
+      , data: {}
+      , done: function (res) {
+        document.getElementById("numairobot").innerHTML = res.data.length;       
+      }       
+    });
+
+    minna.req({   
+      url: setting.url +  "tts/list" 
+      , data: {}
+      , done: function (res) {
+        document.getElementById("numtts").innerHTML = res.data.length;       
+      }       
+      });
+
+      $('.layminna-carousel').each(function(){
+      var othis = $(this);
+      carousel.render({
+        elem: this
+        ,width: '100%'
+        ,arrow: 'none'
+        ,interval: othis.data('interval')
+        ,autoplay: othis.data('autoplay') === true
+        ,trigger: (device.ios || device.android) ? 'click' : 'hover'
+        ,anim: othis.data('anim')
+      });
+    });
+    
+    ele.render('progress');
+  
+  });
+  
+  </script>
+</body>
+</html>
+
