@@ -1,37 +1,165 @@
-# Minna
+# MINNA
 
-#### 介绍
-一个基于NodeJS，Layui框架打造的物联网系统。该系统能够轻松连接ESP32设备，并与抖音扣子/同义千问/百度千凡等平台无缝对接，通过智能代理系统提供自然流畅的语音对话体验。
+<p align="center">
+  <img src="minna/doc/logo.png" alt="Minna Logo" width="200"/>
+  <br>
+  <em style="color: #9b59b6; font-weight: bold;">"I gonna walk with you"</em>
+</p>
 
-#### 软件架构
-软件架构说明
+## 项目简介
+MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。它不仅仅是一个管理平台，更是由数字形象 Minna 陪伴的智能助手。系统支持 ESP32 设备接入，并能与抖音扣子平台完美对接，为用户提供流畅的语音对话体验。
+
+本项目正式发布于2025年1月29日零点，代码已经完整测试可运行，支持最新源码编译的xiaozhi固件，项目文档还在完善。
+
+## 📸
+![Minna截图](minna/doc/index.jpg)
+![Minna截图](minna/doc/esp32.jpg)
+
+## ✨ 特色功能
+- 🤖 ESP32设备快速接入与管理
+- 🎯 多平台AI对接支持：
+  - 抖音扣子平台
+  - 百度千帆平台
+  - 阿里通义千问
+- 🗣️ AI智能语音对话系统
+- 🏠 支持本地化部署
+- 🔒 私密性保障
+- 🎨 清新优雅的界面设计
+- 👧 Minna数字助手陪伴
+
+## 🔨 技术框架
+- 后端：Node.js 20.18.1
+- 前端：基于 Layui 框架开发
+  - 使用 Layui 的免费开源组件
+  - 专注于 Layui 核心功能
+  - 简洁高效的模块化设计
+- 数据库：MongoDB
+  - 推荐版本：3.2 或 4.0
+  - 更高版本可能需要额外测试验证
+
+## 🚀 快速开始
+
+### 环境要求
+- Node.js = 20.18.1
+- NPM >= 10.0.0
+- Visual Studio Express 2022（C++ 开发工具）
+- MongoDB 3.2 或 4.0
+- 管理员权限
+
+### 前置安装
+1. 安装 Visual Studio Express 2022
+   - 下载并安装 [Visual Studio Express 2022](https://visualstudio.microsoft.com/vs/express/)
+   - 在安装时选择 "使用C++的桌面开发" 工作负载
+   - 完成安装后重启电脑
+
+2. 安装 MongoDB
+   - 下载 [MongoDB 3.2](https://www.mongodb.com/download-center/community/releases/archive) 或 [MongoDB 4.0](https://www.mongodb.com/download-center/community/releases/archive)
+   - 按照官方指南完成安装
+   - 启动 MongoDB 服务
+   - 验证安装：
+     ```bash
+     mongo --version  # 检查 MongoDB 版本
+     ```
+
+3. 安装 Node.js
+   - 下载 [Node.js 20.18.1](https://nodejs.org/)
+   - **以管理员身份运行**安装程序
+   - 确保 Node.js 和 npm 已正确安装：
+     ```bash
+     node --version  # 应显示 v20.18.1
+     npm --version   # 检查 npm 版本
+     ```
+
+### 项目安装步骤
+1. 克隆项目
+  - bash
+  - git clone https://gitee.com/manykit/minna.git
+  - cd minna/minna/
+  - bash
+  - Windows: 以管理员身份运行 PowerShell 或命令提示符
+  - npm install
+  - Linux/MacOS
+  - sudo npm install
+  - bash
+  - npm start
+  - 打开网页http://127.0.0.1:6700
 
 
-#### 安装教程
+## 📚 主要模块
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 设备管理（AITalk）
+- ESP32设备接入
+- 设备状态监控
+- 远程控制功能
 
-#### 使用说明
+### 智能对话（AIRobot）
+- 支持多个AI平台：
+  - 抖音扣子
+  - 百度千帆
+  - 阿里通义千问
+- 智能语音交互
+- 自然语言处理
+- 多场景对话支持
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 语音合成（TTS）
+- 多音色支持
+- 实时语音合成
+- 自定义语音库
 
-#### 参与贡献
+## ⚠️ 版权说明
+本项目是一个独立开发的系统，前端界面基于 Layui 框架进行开发。为了确保合规性：
+- 移除了 LayuiAdmin 相关的专有代码和组件
+- 仅使用 Layui 开源框架的功能
+- 保留了必要的基础架构，专注于物联网功能实现
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+### 相关技术版权
+- Layui：MIT License
+- Node.js：MIT License
+- MongoDB：Server Side Public License (SSPL)
 
+## 📝 特别说明
+如果您计划在商业项目中使用 LayuiAdmin 的功能，请购买其商业授权。
 
-#### 特技
+本项目的语音对话功能受到 [xiaozhi](https://github.com/78/xiaozhi) 项目的启发，在其基础上进行了完善，使其能够与小智开源固件进行正常通信。感谢xiaozhi项目团队的开源贡献。
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 🤝 贡献指南
+我们欢迎所有形式的贡献，无论是新功能、bug修复还是文档改进。请遵循以下步骤：
+
+1. Fork 本仓库
+2. 创建新的分支 `git checkout -b feature/AmazingFeature`
+3. 提交更改 `git commit -m 'Add some AmazingFeature'`
+4. 推送到分支 `git push origin feature/AmazingFeature`
+5. 提交 Pull Request
+
+## 📄 开源协议
+本项目采用 [MIT](LICENSE) 协议开源。用户基于本项目开发的插件可以选择不开源，并可以进行商业化运营。这意味着您可以：
+- 自由使用、修改和分发本项目的代码
+- 基于本项目开发的插件可以闭源
+- 将您开发的插件用于商业目的
+- 在遵守 MIT 协议的前提下，按照您的意愿处理衍生作品
+
+## 🌟 关于 Minna
+Minna 是本系统的数字形象，一位充满活力的小女孩。她不仅代表着系统的温暖与智慧，更承载着我们对技术人性化的追求。通过 Minna，我们希望让物联网设备管理变得更加友好和有趣。
+
+## 📞 联系我们
+- 官方网站：[https://manykit.com](https://manykit.com)
+- 技术支持：support@manykit.com
+- 项目地址：[GitHub Repository](https://gitee.com/manykit/minna)
+
+## 🙏 致谢
+ - https://github.com/78/xiaozhi-esp32
+ - https://gitee.com/layui/layui
+ - https://github.com/78/xiaozhi
+
+### 常见问题
+1. 如果在安装依赖时遇到 node-gyp 相关错误，请确保：
+   - Visual Studio Express 2022 已正确安装
+   - 已安装 C++ 开发工具
+   - 使用管理员权限运行安装命令
+
+2. 如果遇到权限相关错误，请确保使用管理员权限运行命令
+
+3. MongoDB 相关问题：
+   - 如果使用高于 4.0 版本的 MongoDB，请先在测试环境验证兼容性
+   - 确保 MongoDB 服务已经启动
+   - 检查数据库连接配置是否正确
