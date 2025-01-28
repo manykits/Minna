@@ -1,7 +1,7 @@
 # MINNA
 
 <p align="center">
-  <img src="minna/doc/logo.png" alt="Minna Logo" width="200"/>
+  <img src="doc/logo.png" alt="Minna Logo" width="200"/>
   <br>
   <em style="color: #9b59b6; font-weight: bold;">"I gonna walk with you"</em>
 </p>
@@ -12,8 +12,8 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 本项目正式发布于2025年1月29日零点，代码已经完整测试可运行，支持最新源码编译的xiaozhi固件，项目文档还在完善。
 
 ## 📸
-![Minna截图](minna/doc/index.jpg)
-![Minna截图](minna/doc/esp32.jpg)
+![Minna截图](doc/index.jpg)
+![Minna截图](doc/esp32.jpg)
 
 ## ✨ 特色功能
 - 🤖 ESP32设备快速接入与管理
