@@ -98,14 +98,14 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
     BYTEDANCE_TTS_APP_KEY=
   
 4. 修改D:/Minna/dbstart/mongodb3.2.bat内容路径，并执行修改D:/Minna/dbstart/mongostage3.2内容路径，并执行；打开db.txt，查看内容，复制到mongostage3.2命令行框内，执行初始化数据库工作。
-![alt text](image.png)
+![alt text](doc/image.png)
 执行完毕后，关闭所有命令行。
 
 5. 进入Minna主目录，修改startminna.bat，D:/Minna/dbstart/mongodb3.2auth.bat内路径，并执行；
-![alt text](image-1.png)
+![alt text](doc/image-1.png)
 - 打开网页http://127.0.0.1:6700会自动跳转到登陆页面
 http://127.0.0.1:6700/login.html
-![alt text](image-2.png)
+![alt text](doc/image-2.png)
 输入账号密码admin/admin登录
 
 ## 📚 主要模块
