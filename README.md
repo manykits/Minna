@@ -102,9 +102,11 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 执行完毕后，关闭所有命令行。
 
 5. 进入Minna主目录，修改startminna.bat，D:/Minna/dbstart/mongodb3.2auth.bat内路径，并执行；
-
-  - 打开网页http://127.0.0.1:6700
-
+![alt text](image-1.png)
+- 打开网页http://127.0.0.1:6700会自动跳转到登陆页面
+http://127.0.0.1:6700/login.html
+![alt text](image-2.png)
+输入账号密码admin/admin登录
 
 ## 📚 主要模块
 

@@ -41,7 +41,7 @@ async function addVoices() {
                 });
 
                 await userf.save();
-                console.log("add new user suc!");
+                console.log("add voice suc!");
             }
         } catch (err) {
             console.error("Error adding user:", err);
