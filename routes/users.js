@@ -526,7 +526,7 @@ router.use('/login', function (req, res, next) {
             var nickname = val[0].nickname;
             var username = val[0].username;
 
-            var idmt = "mt_" + id;
+            var idmt = "minna_" + id;
             redisClient.get(idmt, function(err, v){
               if (err){
               }
@@ -618,7 +618,7 @@ router.use('/login', function (req, res, next) {
                 if (err){              
                 }
                 else{
-                  var idmt = "mt_" + newID;
+                  var idmt = "minna_" + newID;
 
                   var acceToken = tool.randomString(20);
                   var obj = { id: newID, password:cryptpwd1, accesstoken:acceToken};
@@ -666,7 +666,7 @@ router.use('/logout', function (req, res, next) {
 
       if (id)
       {
-        var idmt = "mt_" + id;
+        var idmt = "minna_" + id;
         redisClient.del(idmt);
       }
 
