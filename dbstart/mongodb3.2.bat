@@ -1,1 +1,1 @@
-start "start MongoDB database mthing" "C:\Program Files (x86)\MongoDB\Server\3.2\bin\mongod.exe" --storageEngine=mmapv1 --dbpath ./mdata
+start "start MongoDB database minna" "C:\Program Files (x86)\MongoDB\Server\3.2\bin\mongod.exe" --storageEngine=mmapv1 --dbpath ./mdata

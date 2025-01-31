@@ -1,5 +1,6 @@
-set work_path=D:\ManyKit\Minna\trunk\Minna
+set work_path=D:\Minna
 D:
+
 echo -----------start redis
 cd %work_path%\tools\redis64\
 start %work_path%\tools\redis64\redis-server.exe

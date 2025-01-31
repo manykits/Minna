@@ -1,1 +1,0 @@
-"D:\MongoDB\Server\3.2\bin\mongoexport.exe" -d mthing -c model_peoples -o model_peoples.json --type json -u mthing -p mt123 --authenticationDatabase admin

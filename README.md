@@ -16,14 +16,14 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 ![Minna截图](doc/esp32.jpg)
 
 ## ✨ 特色功能
-- 🤖 ESP32设备快速接入与管理
+- 🤖 ESP32 语音对话助手设备接入与管理
 - 🎯 多平台AI对接支持：
   - 抖音扣子平台
   - 百度千帆平台
   - 阿里通义千问
-- 🗣️ AI智能语音对话系统
-- 🏠 支持本地化部署
-- 🔒 私密性保障
+- 🗣️ AI智能语音选择，支持45个特色语音
+- 🏠 支持本地化部署（tts和大模型需要调用互联网平台，本地模型支持还需要继续开发）
+- 🔒 私密性保障（待完全本地升级）
 - 🎨 清新优雅的界面设计
 - 👧 Minna数字助手陪伴
 
@@ -44,12 +44,12 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 - NPM >= 10.0.0
 - Visual Studio Express 2022（C++ 开发工具）
 - MongoDB 3.2 或 4.0
-- 管理员权限
+- 以管理员权限安装时启动NodeJS CMD
 
 ### 前置安装
 1. 安装 Visual Studio Express 2022
    - 下载并安装 [Visual Studio Express 2022](https://visualstudio.microsoft.com/vs/express/)
-   - 在安装时选择 "使用C++的桌面开发" 工作负载
+   - 在安装时选择 "使用C++的桌面开发" 
    - 完成安装后重启电脑
 
 2. 安装 MongoDB
@@ -74,14 +74,35 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 1. 克隆项目
   - bash
   - git clone https://gitee.com/manykit/minna.git
-  - cd minna/minna/
-  - bash
-  - Windows: 以管理员身份运行 PowerShell 或命令提示符
+  - cd minna/
+
+2 .Windows: 以管理员身份运行 PowerShell 或命令提示符
   - npm install
-  - Linux/MacOS
-  - sudo npm install
-  - bash
-  - npm start
+
+3 .修改minna/plugins/device-aitalk/.env，Minna/plugins/tts/.env文件，填写抖音扣子，千帆，通义千问的API密钥
+  
+    COZE_API_TOKEN=
+
+    COZE_BOT_ID=
+
+    QIANFAN_API_ID=
+    
+    QIANFAN_API_KEY=
+
+    DASHSCOPE_TOKEN=
+    
+    DASHSCOPE_MODEL_NAME=
+
+    BYTEDANCE_TTS_APP_ID=
+
+    BYTEDANCE_TTS_APP_KEY=
+  
+4. 修改D:/Minna/dbstart/mongodb3.2.bat内容路径，并执行修改D:/Minna/dbstart/mongostage3.2内容路径，并执行；打开db.txt，查看内容，复制到mongostage3.2命令行框内，执行初始化数据库工作。
+![alt text](image.png)
+执行完毕后，关闭所有命令行。
+
+5. 进入Minna主目录，修改startminna.bat，D:/Minna/dbstart/mongodb3.2auth.bat内路径，并执行；
+
   - 打开网页http://127.0.0.1:6700
 
 
@@ -139,8 +160,9 @@ Minna 是本系统的数字形象，一位充满活力的小女孩。她不仅�
 
 ## 🙏 致谢
  - https://github.com/78/xiaozhi-esp32
- - https://gitee.com/layui/layui
  - https://github.com/78/xiaozhi
+ - https://gitee.com/layui/layui
+
 
 ### 常见问题
 1. 如果在安装依赖时遇到 node-gyp 相关错误，请确保：
