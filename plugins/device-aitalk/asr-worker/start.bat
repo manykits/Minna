@@ -1,5 +1,5 @@
-set work_path=E:\MANYKit\trunk\MThing\plugins\aitalkpro\asr-worker
-E:
+set work_path=D:\MANYKit\minna\plugins\aitalkpro\asr-worker
+D:
 cd %work_path%
 echo run ctivate asr
 CALL  conda activate asr

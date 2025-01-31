@@ -56,7 +56,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser("mthing"));
+app.use(cookieParser("minna"));
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(express.static(path.join(__dirname, 'plugins/')));
 app.use(express.static(path.join(__dirname, 'homes/')));

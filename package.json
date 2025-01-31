@@ -1,5 +1,5 @@
 {
-  "name": "mthing",
+  "name": "minna",
   "node-main": "./bin/www",
   "version": "0.0.0",
   "private": true,
