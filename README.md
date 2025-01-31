@@ -71,7 +71,8 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
      ```
 
 ### 项目安装步骤
-1. 克隆项目
+
+1 .克隆项目
   - bash
   - git clone https://gitee.com/manykit/minna.git
   - cd minna/
@@ -97,23 +98,26 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 
     BYTEDANCE_TTS_APP_KEY=
   
-4. 修改D:/Minna/dbstart/mongodb3.2.bat内容路径，并执行修改D:/Minna/dbstart/mongostage3.2内容路径，并执行；打开db.txt，查看内容，复制到mongostage3.2命令行框内，执行初始化数据库工作。
+4 .修改DMinna/dbstart/mongodb3.2.bat;D:/Minna/dbstart/mongostage3.2内容路径，并执行；打开db.txt，查看内容，复制到mongostage3.2命令行框内，执行初始化数据库工作。
 ![alt text](doc/image.png)
 执行完毕后，关闭所有命令行。
 
-5. 进入Minna主目录，修改startminna.bat，D:/Minna/dbstart/mongodb3.2auth.bat内路径，并执行；
+5 .修改Minna/startminna.bat;D:/Minna/dbstart/mongodb3.2auth.bat内路径，并执行；
 ![alt text](doc/image-1.png)
+
+6. 登录网页
 - 打开网页http://127.0.0.1:6700会自动跳转到登陆页面
 http://127.0.0.1:6700/login.html
 ![alt text](doc/image-2.png)
-输入账号密码admin/admin登录
+
+输入账号密码admin/admin登录（redis如果没有将账号形系存储到文件，关闭后第二次重新启动，可能需要清空缓存，重新登录）
+
+7. 注册ESP32 xiaozhi设备，增加扣子机器人等文档，待续
 
 ## 📚 主要模块
 
 ### 设备管理（AITalk）
 - ESP32设备接入
-- 设备状态监控
-- 远程控制功能
 
 ### 智能对话（AIRobot）
 - 支持多个AI平台：
@@ -158,7 +162,8 @@ Minna 是本系统的数字形象，一位充满活力的小女孩。她不仅�
 ## 📞 联系我们
 - 官方网站：[https://manykit.com](https://manykit.com)
 - 技术支持：manyxu@foxmail.com
-- 项目地址：[GitHub Repository](https://gitee.com/manykit/minna)
+- QQ群：985400571
+- 项目地址：[Gitee Repository](https://gitee.com/manykit/minna)
 
 ## 🙏 致谢
  - https://github.com/78/xiaozhi-esp32
