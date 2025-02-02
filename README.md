@@ -12,6 +12,8 @@ MINNA 是一个基于 NodeJS 和 Layui 框架打造的智能物联网系统。�
 本项目正式发布于2025年1月29日（大年初一），代码已经完整测试可运行，支持最新源码编译的xiaozhi固件，项目文档还在完善。
 
 ## 📸
+[点击观看视频](https://www.bilibili.com/video/BV1XWFyeNEcF/?vd_source=6138e3506dcd55531f53563dc98cbf68)
+
 ![Minna截图](doc/index.jpg)
 ![Minna截图](doc/esp32.jpg)
 
